@@ -698,6 +698,43 @@ function SidebarMenuSubButton({
   )
 }
 
+function SidebarMenuLogo({
+  app,
+  className,
+  ...props
+}: React.ComponentProps<"div"> & {
+  app: {
+    name: string
+    logo: React.ElementType
+    desc?: string
+  }
+}) {
+  const { state } = useSidebar()
+  const LogoIcon = app.logo
+
+  return (
+    <div
+      data-slot="sidebar-menu-logo"
+      data-sidebar="menu-logo"
+      className={cn(
+        "flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! group-data-[collapsible=icon]:justify-center [&>svg]:size-4 [&>svg]:shrink-0",
+        className
+      )}
+      {...props}
+    >
+      <LogoIcon className="size-4 shrink-0" />
+      <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
+        <span className="truncate font-semibold">{app.name}</span>
+        {app.desc && (
+          <span className="truncate text-xs text-sidebar-foreground/70">
+            {app.desc}
+          </span>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export {
   Sidebar,
   SidebarContent,
@@ -714,6 +751,7 @@ export {
   SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuLogo,
   SidebarMenuSkeleton,
   SidebarMenuSub,
   SidebarMenuSubButton,

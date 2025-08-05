@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import {
-  AudioWaveform,
   Mail,
   Album,
   LayoutList,
@@ -12,7 +11,7 @@ import {
 
 import { NavMain } from "@/components/nav-main"
 import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { TeamSwitcher } from "@/components/nav-logo"
 import {
   Sidebar,
   SidebarContent,
@@ -33,16 +32,6 @@ const data = {
       name: "Acme Inc",
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: LayoutList,
-      plan: "Free",
     },
   ],
   navMain: [
