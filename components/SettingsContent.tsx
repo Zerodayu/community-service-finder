@@ -6,4 +6,4 @@ const SettingsContent = () => {
   )
 }
 
-export default SettingsContent
+export { SettingsContent };

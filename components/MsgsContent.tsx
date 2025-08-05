@@ -6,4 +6,4 @@ const MsgsContent = () => {
   )
 }
 
-export default MsgsContent
+export {MsgsContent}

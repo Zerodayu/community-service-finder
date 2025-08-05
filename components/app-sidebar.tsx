@@ -34,39 +34,55 @@ const data = {
       plan: "Search now",
     },
   ],
-  navMain: [
+}
+
+export function AppSidebar({ 
+  onNavigate, 
+  ...props 
+}: React.ComponentProps<typeof Sidebar> & { 
+  onNavigate?: (page: string) => void 
+}) {
+  const [activeItem, setActiveItem] = React.useState("Home")
+
+  const navMain = [
     {
       title: "Home",
       url: "#",
       icon: LayoutList,
-      isActive: true,
+      isActive: activeItem === "Home",
     },
     {
       title: "Saves",
       url: "#",
       icon: Album,
+      isActive: activeItem === "Saves",
     },
     {
       title: "Messages",
       url: "#",
       icon: Mail,
+      isActive: activeItem === "Messages",
     },
     {
       title: "Settings",
       url: "#",
       icon: Settings2,
+      isActive: activeItem === "Settings",
     },
-  ],
-}
+  ]
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const handleNavigation = (title: string) => {
+    setActiveItem(title)
+    onNavigate?.(title)
+  }
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <LogoHeader teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={navMain} onItemClick={handleNavigation} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

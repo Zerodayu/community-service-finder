@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { AppSidebar } from "@/components/app-sidebar"
 import {
   Breadcrumb,
@@ -13,11 +16,33 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { HomeContent } from "@/components/HomeContent"
+import { SavesContent } from "@/components/SavesContent"
+import { MsgsContent } from "@/components/MsgsContent"
+import { SettingsContent } from "@/components/SettingsContent"
+
 
 export default function Page() {
+  const [activeContent, setActiveContent] = useState("Home")
+
+  const renderContent = () => {
+    switch (activeContent) {
+      case "Home":
+        return <HomeContent />
+      case "Saves":
+        return <SavesContent />
+      case "Messages":
+        return <MsgsContent />
+      case "Settings":
+        return <SettingsContent />
+      default:
+        return <HomeContent />
+    }
+  }
+
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar onNavigate={setActiveContent} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
@@ -28,27 +53,17 @@ export default function Page() {
             />
             <Breadcrumb>
               <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  <BreadcrumbPage>{activeContent}</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-          </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
-        </div>
+        <section>
+          <div className="p-4">{renderContent()}</div>
+        </section>
       </SidebarInset>
     </SidebarProvider>
   )

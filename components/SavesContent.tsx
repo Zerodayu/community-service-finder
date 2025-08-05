@@ -6,4 +6,4 @@ const SavesContent = () => {
   )
 }
 
-export default SavesContent
+export {SavesContent};

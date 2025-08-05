@@ -12,6 +12,7 @@ import {
 
 export function NavMain({
   items,
+  onItemClick,
 }: {
   items: {
     title: string
@@ -19,6 +20,7 @@ export function NavMain({
     icon?: LucideIcon
     isActive?: boolean
   }[]
+  onItemClick?: (title: string) => void
 }) {
   return (
     <SidebarGroup>
@@ -26,11 +28,15 @@ export function NavMain({
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.title}>
-            <SidebarMenuButton asChild tooltip={item.title} isActive={item.isActive}>
-              <a href={item.url}>
+            <SidebarMenuButton
+              asChild
+              tooltip={item.title}
+              isActive={item.isActive}
+            >
+              <button onClick={() => onItemClick?.(item.title)}>
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
-              </a>
+              </button>
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
