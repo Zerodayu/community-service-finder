@@ -11,7 +11,7 @@ import {
 
 import { NavMain } from "@/components/nav-main"
 import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/nav-logo"
+import { LogoHeader } from "@/components/nav-logo"
 import {
   Sidebar,
   SidebarContent,
@@ -29,9 +29,9 @@ const data = {
   },
   teams: [
     {
-      name: "Acme Inc",
+      name: "Community Service Finder",
       logo: GalleryVerticalEnd,
-      plan: "Enterprise",
+      plan: "Search now",
     },
   ],
   navMain: [
@@ -63,7 +63,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <LogoHeader teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
