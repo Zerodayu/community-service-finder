@@ -7,7 +7,7 @@ export default function Home() {
     <section>
       <div>
         <Button>
-          <Link href="/home">
+          <Link href="/login">
             Home
           </Link>
         </Button>
