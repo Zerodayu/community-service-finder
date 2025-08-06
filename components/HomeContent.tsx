@@ -1,14 +1,20 @@
 import React from 'react'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
-import { ArrowRightIcon, SearchIcon } from "lucide-react"
+import { ArrowRightIcon, SearchIcon, CircleFadingPlus, ListFilterPlus } from "lucide-react"
 
 const HomeContent = () => {
   return (
     <section>
-      <div className="flex flex-col items-center justify-center gap-4 p-6">
-        <div className="max-w-md ">
-          <div className="relative">
+      <div className="flex flex-col items-center justify-center gap-4">
+
+        <div className="flex flex-row items-center justify-between gap-2 w-full">
+          <Button>
+            <CircleFadingPlus size={16} />
+            Post
+          </Button>
+          
+          <div className="relative flex-1 max-w-md">
             <Input
               variant="outline-blur"
               className="peer ps-9 pe-9"
@@ -25,6 +31,9 @@ const HomeContent = () => {
               <ArrowRightIcon size={16} />
             </Button>
           </div>
+          <Button variant="ghost" className='px-6'>
+            <ListFilterPlus size={16} />
+          </Button>
         </div>
       </div>
     </section>
