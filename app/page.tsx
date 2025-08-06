@@ -1,16 +1,16 @@
 
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import LandingNavbar from "@/components/LandingNavbar";
+import HeroSecion from "@/components/HeroSecion";
+import FeatureSection from "@/components/FeatureSection";
+
 
 export default function Home() {
   return (
     <section>
       <div>
-        <Button>
-          <Link href="/login">
-            Home
-          </Link>
-        </Button>
+        <LandingNavbar />
+        <HeroSecion />
+        <FeatureSection />
 
       </div>
     </section>
